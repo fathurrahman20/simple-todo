@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
@@ -17,7 +18,6 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { PlusIcon } from "@heroicons/react/20/solid";
-import { DialogClose } from "@radix-ui/react-dialog";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -31,11 +31,17 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Todo } from "@/context/TodoContext";
-import { useEffect } from "react";
+import { PencilIcon } from "@heroicons/react/24/outline";
 
 const FormSchema = z.object({
-  title: z.string().max(50),
-  description: z.string().max(200),
+  title: z
+    .string()
+    .min(5, { message: "Must be 5 or more characters long" })
+    .max(50),
+  description: z
+    .string()
+    .min(10, { message: "Must be 10 or more characters long" })
+    .max(200),
   status: z.string({
     required_error: "Please select an status to display.",
   }),
@@ -52,10 +58,12 @@ interface AddEditTodo {
 }
 
 const AddEditTodo = ({ initialData, onSubmit }: AddEditTodo) => {
+  const [isSubmit, setSubmit] = useState(true);
+  const isModal = !isSubmit;
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
-      title: "",
+      title: "Title",
       description: "",
       status: "todo",
     },
@@ -80,17 +88,25 @@ const AddEditTodo = ({ initialData, onSubmit }: AddEditTodo) => {
     };
 
     initialData ? onSubmit(todoData, initialData?.id) : onSubmit(todoData);
+    setSubmit(true);
     form.reset();
   }
+
   return (
-    <Dialog>
+    <Dialog modal={isModal}>
       <DialogTrigger asChild>
-        <Button variant={initialData && "secondary"}>
-          <PlusIcon aria-hidden="true" className="-ml-0.5 size-5" />
+        <Button
+          variant={initialData && "secondary"}
+          onClick={() => setSubmit(false)}>
+          {initialData ? (
+            <PencilIcon aria-hidden="true" className="-ml-0.5 size-5" />
+          ) : (
+            <PlusIcon aria-hidden="true" className="-ml-0.5 size-5" />
+          )}
           {initialData ? "Edit Todo" : "Add Todo"}
         </Button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[425px]">
+      <DialogContent className={`sm:max-w-[425px] ${isSubmit ? "hidden" : ""}`}>
         <DialogHeader>
           <DialogTitle>{initialData ? "Edit Data" : "Add Todo"}</DialogTitle>
           <DialogDescription>
@@ -114,7 +130,6 @@ const AddEditTodo = ({ initialData, onSubmit }: AddEditTodo) => {
                   <FormControl>
                     <Input
                       placeholder={initialData?.title || "Todo Title"}
-                      required={initialData ? false : true}
                       {...field}
                     />
                   </FormControl>
@@ -134,7 +149,6 @@ const AddEditTodo = ({ initialData, onSubmit }: AddEditTodo) => {
                       placeholder={
                         initialData?.description || "Todo Description"
                       }
-                      required={initialData ? false : true}
                       {...field}
                     />
                   </FormControl>
@@ -169,9 +183,7 @@ const AddEditTodo = ({ initialData, onSubmit }: AddEditTodo) => {
               )}
             />
             <DialogFooter>
-              <DialogClose asChild>
-                <Button type="submit">Save changes</Button>
-              </DialogClose>
+              <Button type="submit">Save changes</Button>
             </DialogFooter>
           </form>
         </Form>
