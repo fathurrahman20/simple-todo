@@ -15,7 +15,7 @@ const ReviewPage = () => {
           {data.length !== 0 ? (
             data.map((todo) => <Card key={todo.id} todo={todo} />)
           ) : (
-            <EmptyTodo />
+            <EmptyTodo page="review" />
           )}
         </div>
       </Layout>

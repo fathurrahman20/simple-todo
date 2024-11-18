@@ -14,7 +14,7 @@ const DonePage = () => {
           {data.length !== 0 ? (
             data.map((todo) => <Card key={todo.id} todo={todo} />)
           ) : (
-            <EmptyTodo />
+            <EmptyTodo page="done" />
           )}
         </div>
       </Layout>

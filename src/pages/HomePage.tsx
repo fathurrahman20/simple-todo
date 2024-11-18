@@ -14,7 +14,7 @@ const Home = () => {
           {todos.length !== 0 ? (
             todos.map((todo) => <Card key={todo.id} todo={todo} />)
           ) : (
-            <EmptyTodo />
+            <EmptyTodo page="home" />
           )}
         </div>
       </Layout>
