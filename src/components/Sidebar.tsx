@@ -118,7 +118,7 @@ const Sidebar = () => {
               </TransitionChild>
               {/* Sidebar component, swap this element with another sidebar if you like */}
               <div className="flex flex-col px-6 pb-4 overflow-y-auto bg-gray-900 grow gap-y-5 ring-1 ring-white/10">
-                <div className="flex items-center h-16 shrink-0">
+                <div className="flex items-center h-16 mt-1 -ml-3 shrink-0">
                   <img alt="Your Company" src={Icon} className="w-auto h-16" />
                 </div>
                 <nav className="flex flex-col flex-1">
@@ -167,7 +167,7 @@ const Sidebar = () => {
         <div className="hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-72 lg:flex-col">
           {/* Sidebar component, swap this element with another sidebar if you like */}
           <div className="flex flex-col px-6 pb-4 overflow-y-auto bg-gray-900 grow gap-y-5">
-            <div className="flex items-center h-16 shrink-0">
+            <div className="flex items-center h-16 -ml-3 shrink-0">
               <img alt="Your Company" src={Icon} className="w-auto h-16 mt-2" />
             </div>
             <nav className="flex flex-col flex-1">

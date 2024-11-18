@@ -27,7 +27,7 @@ const TodoPage = () => {
     <>
       <Layout>
         {/* Card */}
-        <div className="flex flex-wrap justify-center gap-4 lg:ml-80 xl:max-w-7xl 2xl:max-w-full card-container lg:justify-start mt-7">
+        <div className="flex flex-wrap justify-center gap-4 lg:ml-80 xl:max-w-7xl 2xl:max-w-full card-container lg:justify-start mt-7 mb-5">
           {filteredTodos.length > 0 ? (
             filteredTodos.map((todo) => <Card key={todo.id} todo={todo} />)
           ) : (
