@@ -1,3 +1,4 @@
+import { dummy } from "@/data/dummy";
 import { createContext, useState, useContext, ReactNode } from "react";
 
 export interface Todo {
@@ -13,35 +14,9 @@ interface TodoContextType {
   removeTodo: (id: number) => void;
   updateTodo: (todo: Todo, id?: number) => void;
   filterTodo: (status: "todo" | "progress" | "review" | "done") => void;
+  inputSearch: string;
+  setInputSearch: (search: string) => void;
 }
-
-const dummy: Todo[] = [
-  {
-    id: 1,
-    title: "Setup Project",
-    description:
-      "Initialize the project with necessary configurations and dependencies.",
-    status: "todo",
-  },
-  {
-    id: 2,
-    title: "Design Homepage",
-    description: "Create a wireframe and visual design for the homepage.",
-    status: "progress",
-  },
-  {
-    id: 3,
-    title: "Implement Authentication",
-    description: "Develop user login and registration functionalities.",
-    status: "review",
-  },
-  {
-    id: 4,
-    title: "Deploy to Production",
-    description: "Deploy the application to the production environment.",
-    status: "done",
-  },
-];
 
 const TodoContext = createContext<TodoContextType | undefined>(undefined);
 
@@ -54,6 +29,7 @@ export const TodoProvider = ({ children }: { children: ReactNode }) => {
     console.error("Failed to parse todos from localStorage:", error);
   }
   const [todos, setTodos] = useState<Todo[]>(data.length !== 0 ? data : dummy);
+  const [inputSearch, setInputSearch] = useState("");
 
   const addTodo = (todo: Todo) => {
     setTodos((prevTodos) => [...prevTodos, todo]);
@@ -80,7 +56,15 @@ export const TodoProvider = ({ children }: { children: ReactNode }) => {
 
   return (
     <TodoContext.Provider
-      value={{ todos, addTodo, removeTodo, updateTodo, filterTodo }}>
+      value={{
+        todos,
+        addTodo,
+        removeTodo,
+        updateTodo,
+        filterTodo,
+        inputSearch,
+        setInputSearch,
+      }}>
       {children}
     </TodoContext.Provider>
   );

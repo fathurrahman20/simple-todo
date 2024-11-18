@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
 import {
   Dialog,
   DialogBackdrop,
@@ -26,6 +26,7 @@ import {
 } from "@heroicons/react/20/solid";
 import { Link, useLocation } from "react-router-dom";
 import Icon from "../assets/icon.webp";
+import { useTodos } from "@/context/TodoContext";
 type Navigation = {
   name: string;
   href: string;
@@ -45,6 +46,7 @@ function classNames(...classes: String[]) {
 const Sidebar = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const { pathname } = useLocation();
+  const { inputSearch, setInputSearch } = useTodos();
 
   const navigation: Navigation[] = [
     {
@@ -78,6 +80,11 @@ const Sidebar = () => {
       current: pathname === "/done" ? true : false,
     },
   ];
+
+  function handleChange(e: ChangeEvent<HTMLInputElement>) {
+    setInputSearch(e.target.value);
+    // console.log(`Input Search: ${inputSearch}`);
+  }
 
   return (
     <>
@@ -232,6 +239,8 @@ const Sidebar = () => {
                   id="search-field"
                   name="search"
                   type="search"
+                  value={inputSearch}
+                  onChange={(e) => handleChange(e)}
                   placeholder="Search..."
                   className="block py-0 pl-8 pr-0 text-gray-900 border-0 size-full placeholder:text-gray-400 focus:ring-0 sm:text-sm"
                 />
