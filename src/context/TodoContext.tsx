@@ -1,5 +1,5 @@
-import { dummy } from "@/data/dummy";
 import { createContext, useState, useContext, ReactNode } from "react";
+import dummy from "@/data/todo";
 
 export interface Todo {
   id: number;

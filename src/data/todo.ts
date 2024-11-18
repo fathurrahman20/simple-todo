@@ -1,6 +1,6 @@
 import { Todo } from "@/context/TodoContext";
 
-export const dummy: Todo[] = [
+const todos: Todo[] = [
   // Todo items
   {
     id: 1,
@@ -59,3 +59,5 @@ export const dummy: Todo[] = [
     status: "done",
   },
 ];
+
+export default todos;
