@@ -2,7 +2,7 @@ import { Button } from "./ui/button";
 import { PencilIcon, PlusIcon } from "@heroicons/react/24/outline";
 
 interface Props {
-  initialData: {
+  initialData?: {
     id: number;
     title: string;
     description: string;
