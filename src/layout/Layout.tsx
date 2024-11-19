@@ -1,4 +1,5 @@
 import AddTodo from "@/components/AddEditTodo";
+import { ModeToggle } from "@/components/mode-toggle";
 import Sidebar from "@/components/Sidebar";
 import { Todo, useTodos } from "@/context/TodoContext";
 import { ReactNode } from "react";
@@ -17,8 +18,12 @@ const Layout = ({ children }: Props) => {
   return (
     <>
       <Sidebar />
+      <div className="flex justify-end mr-8 -mt-14">
+        <ModeToggle />
+      </div>
+
       {/* Add Todo Button */}
-      <div className="flex justify-end -mt-12 mr-8">
+      <div className="flex justify-end mt-4 mr-8">
         <AddTodo onSubmit={handleAddTodo} />
       </div>
       {children}

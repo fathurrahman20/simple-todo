@@ -95,7 +95,7 @@ const Sidebar = () => {
           className="relative z-50 lg:hidden">
           <DialogBackdrop
             transition
-            className="fixed inset-0 bg-gray-900/80 transition-opacity duration-300 ease-linear data-[closed]:opacity-0"
+            className="fixed inset-0 bg-white text-gray-900 dark:bg-gray-900/80 dark:text-white transition-opacity duration-300 ease-linear data-[closed]:opacity-0"
           />
 
           <div className="fixed inset-0 flex">
@@ -111,13 +111,13 @@ const Sidebar = () => {
                     <span className="sr-only">Close sidebar</span>
                     <XMarkIcon
                       aria-hidden="true"
-                      className="text-white size-6"
+                      className="text-gray-900 dark:text-white size-6"
                     />
                   </button>
                 </div>
               </TransitionChild>
               {/* Sidebar component, swap this element with another sidebar if you like */}
-              <div className="flex flex-col px-6 pb-4 overflow-y-auto bg-gray-900 grow gap-y-5 ring-1 ring-white/10">
+              <div className="flex flex-col px-6 pb-4 overflow-y-auto text-gray-900 bg-white dark:bg-gray-900 dark:text-white grow gap-y-5 ring-1 ring-white/10">
                 <div className="flex items-center h-16 mt-1 -ml-3 shrink-0">
                   <img alt="Your Company" src={Icon} className="w-auto h-16" />
                 </div>
@@ -166,7 +166,7 @@ const Sidebar = () => {
         {/* Static sidebar for desktop */}
         <div className="hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-72 lg:flex-col">
           {/* Sidebar component, swap this element with another sidebar if you like */}
-          <div className="flex flex-col px-6 pb-4 overflow-y-auto bg-gray-900 grow gap-y-5">
+          <div className="flex flex-col px-6 pb-4 overflow-y-auto text-gray-900 bg-white dark:bg-gray-900 dark:text-white grow gap-y-5">
             <div className="flex items-center h-16 -ml-3 shrink-0">
               <img alt="Your Company" src={Icon} className="w-auto h-16 mt-2" />
             </div>

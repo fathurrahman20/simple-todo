@@ -16,7 +16,10 @@ const Card = ({ todo }: Props) => {
     updateTodo(data, id);
   }
   return (
-    <div className="max-w-xs divide-y divide-gray-200 overflow-hidden rounded-lg bg-[#111827] text-white shadow">
+    <div
+      className="max-w-xs overflow-hidden rounded-lg shadow divide-y 
+  bg-white text-gray-900 divide-gray-200 
+  dark:bg-[#111827] dark:text-white dark:divide-[#374151]">
       <div className="px-4 py-5 sm:px-6">{title}</div>
       <div className="px-4 py-5 sm:p-6">
         <p className="mb-3">{description}</p>
