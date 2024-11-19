@@ -1,6 +1,8 @@
+import useTitlePage from "@/hooks/useTitlePage";
 import { Link } from "react-router-dom";
 
 const ErrorPage = () => {
+  useTitlePage("Not Found :(");
   return (
     <>
       <main>

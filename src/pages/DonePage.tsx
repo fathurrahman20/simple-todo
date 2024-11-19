@@ -1,14 +1,16 @@
 import Card from "@/components/Card";
 import EmptyTodo from "@/components/EmptyTodo";
 import { Todo, useTodos } from "@/context/TodoContext";
+import useTitlePage from "@/hooks/useTitlePage";
 import Layout from "@/layout/Layout";
 import { useEffect, useState } from "react";
 
 const DonePage = () => {
-  const { todos, inputSearch } = useTodos();
-  const data = todos.filter((todo) => todo.status === "done");
   const [search, setSearch] = useState<string | null>(null);
   const [dataSearch, setDataSearch] = useState<Todo[]>([]);
+  const { todos, inputSearch } = useTodos();
+  useTitlePage("Done");
+  const data = todos.filter((todo) => todo.status === "done");
   const filteredTodos = search ? dataSearch : data;
 
   useEffect(() => {
