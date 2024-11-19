@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -56,9 +56,7 @@ const AddEditTodo = ({ initialData, onSubmit }: AddEditTodo) => {
 
   return (
     <Dialog modal={isModal}>
-      <DialogTrigger asChild>
-        <TodoButton initialData={initialData} handleSubmit={setSubmit} />
-      </DialogTrigger>
+      <TodoButton initialData={initialData} handleSubmit={setSubmit} />
       <DialogContent className={`sm:max-w-[425px] ${isSubmit ? "hidden" : ""}`}>
         <TodoFormHeader initialData={initialData} />
         <TodoForm
