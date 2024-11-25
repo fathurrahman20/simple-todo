@@ -4,7 +4,6 @@ const EmptyTodo = ({ page }: { page: PageKey }) => {
   const message = messages[page];
   return (
     <>
-      <div> </div>
       <main
         className="grid min-h-full px-6 py-24 mx-auto bg-white divide-gray-200 
   dark:bg-[#09090B] place-items-center sm:py-32 lg:px-8 -mt-6">
