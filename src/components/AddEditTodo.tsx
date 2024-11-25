@@ -8,6 +8,7 @@ import { FormSchema } from "@/schema/FormSchema";
 import TodoForm from "./TodoForm";
 import TodoFormHeader from "./TodoFormHeader";
 import TodoButton from "./TodoButton";
+import { toast } from "react-toastify";
 
 interface AddEditTodo {
   initialData?: {
@@ -49,7 +50,13 @@ const AddEditTodo = ({ initialData, onSubmit }: AddEditTodo) => {
       status: status as "todo" | "progress" | "review" | "done",
     };
 
-    initialData ? onSubmit(todoData, initialData?.id) : onSubmit(todoData);
+    if (initialData) {
+      onSubmit(todoData, initialData?.id);
+      toast.info("Todo updated successfully!");
+    } else {
+      onSubmit(todoData);
+      toast.success("Todo added successfully!");
+    }
     setSubmit(true);
     form.reset();
   }

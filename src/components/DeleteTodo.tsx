@@ -12,12 +12,16 @@ import {
 import { Button } from "@/components/ui/button";
 import { useTodos } from "@/context/TodoContext";
 import { Trash2 } from "lucide-react";
+import { toast } from "react-toastify";
 
 export function DeleteTodo({ id }: { id: number }) {
   const { todos, removeTodo } = useTodos();
   function handleDelete(id: number) {
     removeTodo(id);
     localStorage.setItem("todos", JSON.stringify(todos));
+    toast.error("Todo deleted successfully!", {
+      icon: false,
+    });
   }
   return (
     <AlertDialog>
