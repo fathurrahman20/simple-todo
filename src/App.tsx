@@ -1,8 +1,7 @@
-import Routers from "./common/router/router";
+import Routers from "./routes/router";
 import { ThemeProvider } from "@/components/theme-provider";
 import "react-toastify/dist/ReactToastify.css";
 import { Bounce, ToastContainer } from "react-toastify";
-import "./App.css";
 
 function App() {
   return (

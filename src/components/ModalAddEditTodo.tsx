@@ -10,7 +10,7 @@ import TodoFormHeader from "./TodoFormHeader";
 import TodoButton from "./TodoButton";
 import { toast } from "react-toastify";
 
-interface AddEditTodo {
+interface ModalAddEditTodo {
   initialData?: {
     id: number;
     title: string;
@@ -20,7 +20,7 @@ interface AddEditTodo {
   onSubmit: (data: Todo, id?: number) => void;
 }
 
-const AddEditTodo = ({ initialData, onSubmit }: AddEditTodo) => {
+const ModalAddEditTodo = ({ initialData, onSubmit }: ModalAddEditTodo) => {
   const [isSubmit, setSubmit] = useState(true);
   const isModal = !isSubmit;
   const form = useForm<z.infer<typeof FormSchema>>({
@@ -76,4 +76,4 @@ const AddEditTodo = ({ initialData, onSubmit }: AddEditTodo) => {
   );
 };
 
-export default AddEditTodo;
+export default ModalAddEditTodo;

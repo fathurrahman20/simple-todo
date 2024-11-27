@@ -16,18 +16,22 @@ const routerList = createBrowserRouter(
     {
       path: "todo",
       element: <TodoPage />,
+      errorElement: <ErrorPage />,
     },
     {
       path: "in-progress",
       element: <ProgressPage />,
+      errorElement: <ErrorPage />,
     },
     {
       path: "review",
       element: <ReviewPage />,
+      errorElement: <ErrorPage />,
     },
     {
       path: "done",
       element: <DonePage />,
+      errorElement: <ErrorPage />,
     },
   ],
   {

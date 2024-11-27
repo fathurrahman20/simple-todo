@@ -1,4 +1,4 @@
-import AddTodo from "@/components/AddEditTodo";
+import AddTodo from "@/components/ModalAddEditTodo";
 import { ModeToggle } from "@/components/mode-toggle";
 import Sidebar from "@/components/Sidebar";
 import { Todo, useTodos } from "@/context/TodoContext";

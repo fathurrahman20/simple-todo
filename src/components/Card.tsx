@@ -1,6 +1,6 @@
 import { Todo, useTodos } from "@/context/TodoContext";
 import { DeleteTodo } from "./DeleteTodo";
-import EditTodo from "./AddEditTodo";
+import EditTodo from "./ModalAddEditTodo";
 import statusMap from "@/data/status";
 
 interface Props {

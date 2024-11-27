@@ -11,11 +11,9 @@ interface Props {
 const TodoFormHeader = ({ initialData }: Props) => {
   return (
     <DialogHeader>
-      <DialogTitle>{initialData ? "Edit Data" : "Add Todo"}</DialogTitle>
+      <DialogTitle>{initialData ? "Edit Todo" : "Add Todo"}</DialogTitle>
       <DialogDescription>
-        {initialData
-          ? "Edit Data"
-          : "Add Todo." + " Click save when you're done."}
+        {initialData ? "Edit " : "Add "} Todo. Click save when you're done.
       </DialogDescription>
     </DialogHeader>
   );
